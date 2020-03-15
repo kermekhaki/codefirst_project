@@ -14,8 +14,11 @@ with open('Sales.csv', 'r') as csv_file:
 #Task 3
 print('The total sum of the sales for 2018 is {}.'.format(sum(sales)))
 
-#Task4
+#Task 4
 print('The average sale per month for 2018 is {}.'.format(round(sum(sales) / len(sales), 2)))
+
+#Task 5
+print()
 
 
 
