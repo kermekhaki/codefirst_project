@@ -25,14 +25,22 @@ print('The total sum of the sales for 2018 is {}.'.format(sum(sales)))
 print('The average sale per month for 2018 is {}.'.format(round(sum(sales) / len(sales), 2)))
 
 #Task 5
+
+## a function to get the month that is associated with the value provided
+def get_month(My_value):
+    for row in my_data:
+        temp_value = int(row['sales'])
+        if My_value == temp_value:
+            return row['month']
+
+## get the minimum value of sales and the corresponding month
 My_minimum = min(sales)
+min_month = get_month(My_minimum)
+print('The minimum sales during 2018 is for the month of {} and is £{}.'.format(min_month, My_minimum))
 
-for row in my_data:
-    Sales_minimum = int(row['sales'])
-    if My_minimum == Sales_minimum:
-        print('The minimum sales during 2018 is for the month of {} and is £{}.'.format(row['month'], My_minimum))
-
-
-
+## get the maximum value of sales and the corresponding month
+My_maximum = max(sales)
+max_month = get_month(My_maximum)
+print('The maximum sales during 2018 is for the month of {} and is £{}.'.format(max_month, My_maximum))
 
 
