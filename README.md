@@ -1,2 +1,2 @@
-# codefirst_project
-Final project for training course
+# codefirst project
+### Final project for training course
