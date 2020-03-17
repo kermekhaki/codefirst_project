@@ -44,3 +44,13 @@ max_month = get_month(My_maximum)
 print('The maximum sales during 2018 is for the month of {} and is £{}.'.format(max_month, My_maximum))
 
 
+#Task 6
+# Calculating balance
+
+def balance(myDict):
+    return int(myDict['sales']) - int(myDict['expenditure'])
+
+monthly_balance = list(map(balance, my_data))
+print('Monthly balance is as follows: {}'.format(monthly_balance))
+
+
