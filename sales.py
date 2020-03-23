@@ -10,23 +10,28 @@ with open('Sales.csv', 'r') as csv_file:
     for row in spreadsheet:
         my_data.append(row)
 
-print ('\n')
-
 #Task 2
-sales = []
-for row in my_data:
-    Sales_sum = int(row['sales'])
-    sales.append(Sales_sum)
+
+sales = list(map(lambda x: int(x['sales']), my_data))
+
+print('The sales for 2018 are as follows: {}'.format(sales))
+
+#If a for loop would be used it will look like this:
+#sales = []
+#for row in my_data:
+#   Sales_sum = int(row['sales'])
+#    sales.append(Sales_sum)
 
 print ('\n')
 
 #Task 3
-print('The total sum of the sales for 2018 is {}.'.format(sum(sales)))
+
+print('The total sum of the sales for 2018 is £{}.'.format(sum(sales)))
 
 print ('\n')
 
 #Task 4
-print('The average sale per month for 2018 is {}.'.format(round(sum(sales) / len(sales), 2)))
+print('The average sales per month for 2018 is £{}.'.format(round(sum(sales) / len(sales), 2)))
 
 print ('\n')
 
@@ -65,16 +70,18 @@ def balance_percent(myDict):
         return round(percentage, 2)
 
 
+print('Balance as a percentage of the sales:')
 for row in my_data:
     month = row['month']
     balance = balance_percent(row)
-    print('For the month of {} the balance as a percentage of the sales is {}%'.format(month, balance))
+    print('For {}: {}%'.format(month, balance))
 
 
 print('\n')
 print('Monthly sales chart:')
 
-sales = list(map(lambda x: int(x['sales']), my_data))
+
+#Using code from task 2.
 month = list(map(lambda x: x['month'], my_data))
 
 sb.lineplot(month, sales, sort=False)
