@@ -2,7 +2,7 @@ import csv
 import matplotlib.pyplot as plt
 import seaborn as sb
 
-#Task 1 & 2 (the answers!)))
+#Task 1
 my_data = []
 with open('Sales.csv', 'r') as csv_file:
     spreadsheet = csv.DictReader(csv_file)
@@ -10,18 +10,28 @@ with open('Sales.csv', 'r') as csv_file:
     for row in spreadsheet:
         my_data.append(row)
 
+#Task 2
+
+sales = list(map(lambda x: int(x['sales']), my_data))
+
+print('The sales for 2018 are as follows: {}'.format(sales))
+
+#If a for loop would be used it will look like this:
+#sales = []
+#for row in my_data:
+#   Sales_sum = int(row['sales'])
+#    sales.append(Sales_sum)
+
+print ('\n')
+
 #Task 3
-sales = []
-for row in my_data:
-    Sales_sum = int(row['sales'])
-    sales.append(Sales_sum)
 
 print('The total sum of the sales for 2018 is £{}.'.format(sum(sales)))
 
 print ('\n')
 
 #Task 4
-print('The average sale per month for 2018 is £{}.'.format(round(sum(sales) / len(sales), 2)))
+print('The average sales per month for 2018 is £{}.'.format(round(sum(sales) / len(sales), 2)))
 
 print ('\n')
 
@@ -70,7 +80,8 @@ for row in my_data:
 print('\n')
 print('Monthly sales chart:')
 
-sales = list(map(lambda x: int(x['sales']), my_data))
+
+#Using code from task 2.
 month = list(map(lambda x: x['month'], my_data))
 
 sb.lineplot(month, sales, sort=False)
