@@ -1,4 +1,6 @@
 import csv
+import matplotlib.pyplot as plt
+import seaborn as sb
 
 #Task 1
 # When we use WITH a file is closed as soon as you finished using with.
@@ -11,6 +13,7 @@ with open('Sales.csv', 'r') as csv_file:
     for row in spreadsheet:
         my_data.append(row)
 
+print ('\n')
 
 #Task 2
 sales = []
@@ -18,11 +21,16 @@ for row in my_data:
     Sales_sum = int(row['sales'])
     sales.append(Sales_sum)
 
+print ('\n')
 #Task 3
 print('The total sum of the sales for 2018 is {}.'.format(sum(sales)))
 
+print ('\n')
+
 #Task 4
 print('The average sale per month for 2018 is {}.'.format(round(sum(sales) / len(sales), 2)))
+
+print ('\n')
 
 #Task 5
 
@@ -38,19 +46,43 @@ My_minimum = min(sales)
 min_month = get_month(My_minimum)
 print('The minimum sales during 2018 is for the month of {} and is £{}.'.format(min_month, My_minimum))
 
+print ('\n')
+
 ## get the maximum value of sales and the corresponding month
 My_maximum = max(sales)
 max_month = get_month(My_maximum)
 print('The maximum sales during 2018 is for the month of {} and is £{}.'.format(max_month, My_maximum))
 
+print ('\n')
 
 #Task 6
-# Calculating balance
+# Calculating monthly balance as percentage of sales
 
-def balance(myDict):
-    return int(myDict['sales']) - int(myDict['expenditure'])
+def balance_percent(myDict):
+    balance = int(myDict['sales']) - int(myDict['expenditure'])
+    if balance < 0:
+        return 0
+    else:
+        percentage = (balance / int(myDict['sales']))*100
+        return round(percentage, 2)
 
-monthly_balance = list(map(balance, my_data))
-print('Monthly balance is as follows: {}'.format(monthly_balance))
 
+for row in my_data:
+    month = row['month']
+    balance = balance_percent(row)
+    print('For the month of {} the balance as a percentage of the sales is {}%'.format(month, balance))
+
+
+print('\n')
+print('Monthly sales chart:')
+
+sales = list(map(lambda x: int(x['sales']), my_data))
+month = list(map(lambda x: x['month'], my_data))
+
+sb.lineplot(month, sales, sort=False)
+plt.xlabel('Month')
+plt.ylabel('Sales in pounds')
+plt.title('Sales per month for 2018')
+#plt.savefig('fig1.png')
+plt.show()
 
