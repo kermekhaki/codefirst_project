@@ -2,7 +2,7 @@ import csv
 import matplotlib.pyplot as plt
 import seaborn as sb
 
-#Task 1
+#Task 1 & 2 (the answers!)))
 my_data = []
 with open('Sales.csv', 'r') as csv_file:
     spreadsheet = csv.DictReader(csv_file)
@@ -10,23 +10,18 @@ with open('Sales.csv', 'r') as csv_file:
     for row in spreadsheet:
         my_data.append(row)
 
-print ('\n')
-
-#Task 2
+#Task 3
 sales = []
 for row in my_data:
     Sales_sum = int(row['sales'])
     sales.append(Sales_sum)
 
-print ('\n')
-
-#Task 3
-print('The total sum of the sales for 2018 is {}.'.format(sum(sales)))
+print('The total sum of the sales for 2018 is £{}.'.format(sum(sales)))
 
 print ('\n')
 
 #Task 4
-print('The average sale per month for 2018 is {}.'.format(round(sum(sales) / len(sales), 2)))
+print('The average sale per month for 2018 is £{}.'.format(round(sum(sales) / len(sales), 2)))
 
 print ('\n')
 
@@ -65,10 +60,11 @@ def balance_percent(myDict):
         return round(percentage, 2)
 
 
+print('Balance as a percentage of the sales:')
 for row in my_data:
     month = row['month']
     balance = balance_percent(row)
-    print('For the month of {} the balance as a percentage of the sales is {}%'.format(month, balance))
+    print('For {}: {}%'.format(month, balance))
 
 
 print('\n')
