@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 import seaborn as sb
 
 #Task 1
-csv file
 my_data = []
 with open('Sales.csv', 'r') as csv_file:
     spreadsheet = csv.DictReader(csv_file)
